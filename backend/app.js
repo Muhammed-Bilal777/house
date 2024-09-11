@@ -5,12 +5,19 @@ import userRoutes from  "./routes/userRoutes.js"
 import cors from "cors"
 import { dbConnect } from "./db/dbConnect.js";
 import errorMiddleware from "./middlewares/errorMiddleware.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 
 const app=express();
 
 dotenv.config({path:"backend/config/config.env"})
  
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const corsOptions ={
    origin:"*",
    
@@ -22,7 +29,19 @@ app.use(express.json())
 //databse connection
 dbConnect();
 
+
+
 app.use('/api/v1' , userRoutes)
+
+
+if (process.env.NODE_ENV === "PRODUCTION") {
+   app.use(express.static(path.join(__dirname, "../frontend/build")));
+ 
+   app.get("*", (req, res) => {
+     res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+   });
+ }
+ 
 
 
 
