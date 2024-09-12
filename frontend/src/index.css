@@ -1,0 +1,36 @@
+
+
+
+
+
+
+.my-carouselcontainer,
+.my-carouselcontainer img{
+    height: 450px !important;
+}
+
+@media (max-width : 450px) {
+    .my-carouselcontainer,
+.my-carouselcontainer img{
+    height: 180px !important;
+}
+}
+
+.my-images{
+    height: 270px;
+}
+.aboutus-image img{
+    width: 520px;
+    height: 320px;
+}
+
+
+@media (max-width : 600px) {
+    .aboutus-image img{
+        width: 330px;
+        height: 260px;
+    }
+}
+.my-svg{
+    width: 20px !important;
+}

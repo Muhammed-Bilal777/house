@@ -5,6 +5,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Home from './components/Home';
 import  {Toaster}  from "react-hot-toast"
+import Heaeder from './components/layout/Heaeder';
 
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
      <Router>
     <div class="container-sm  ">
       <Toaster position='top-center' />
+      <Heaeder />
        <Routes>
        <Route path='/' element={<Home />} />
         <Route path='/register' element={ <Register/>} />
