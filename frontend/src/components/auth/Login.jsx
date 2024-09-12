@@ -22,7 +22,9 @@ const Login = () => {
     }
     if(isSuccess){
       navigate('/' )
-     toast.success(data.message)
+     toast.success("logged  In")
+     console.log(data);
+     
      
     }
 

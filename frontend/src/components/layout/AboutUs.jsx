@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <div>
       <div className="text-center my-3">
-        <div className="row d-flex flex-md-row gap-4">
+        <div className="row d-flex   flex-lg-column gap-4">
           <div className="col-12 col-md-12 col-lg-12 col-xl-12">
             <div className='py-2 align-content-center text-center'>
               <h2>About Us</h2>

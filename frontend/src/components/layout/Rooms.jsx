@@ -17,7 +17,7 @@ const Rooms = () => {
     </div>
   </div> 
   <div className="card  border-0 ">
-    <img src="images/room-2.webp" className="card-img-top my-room-images rounded-4" alt="..." />
+    <img src="images/room-2.webp" className="card-img-top my-images rounded-4" alt="..." />
     <div className="card-body">
       <h5 className="card-title">Double Sharing</h5>
       <p className="card-text">This is a wider room for two persons with three waredrobe, one chair and two tables.</p>
@@ -25,7 +25,7 @@ const Rooms = () => {
     </div>
   </div>
   <div className="card border-0   ">
-    <img src="images/room-4.jpeg" className="card-img-top my-room-images rounded-4" alt="..." />
+    <img src="images/room-4.jpeg" className="card-img-top my-images rounded-4" alt="..." />
     <div className="card-body">
       <h5 className="card-title">Three Sharing</h5>
       <p className="card-text">This is a wider and large room for persons  with three waredrobe, one chair and two tables.</p>

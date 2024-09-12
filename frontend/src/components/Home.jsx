@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Carousel from './layout/Carousel'
 import Rooms from './layout/Rooms'
 import Services from './layout/Services'
@@ -8,10 +8,26 @@ import Videos from './layout/Videos'
 import Testinomial from './layout/Testinomial'
 import Contact from './layout/Contact'
 import Footer from './layout/Footer'
+import FormPopup from './popup/FormPopup'
+import Portal from './popup/portal'
+ 
+ 
 
 const Home = () => {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowPopup(true);
+    }, 60000);  
+  }, []);
+
+
+
   return (
     <>
+   
         <Carousel />
         <Rooms />
         <Services />
@@ -21,6 +37,14 @@ const Home = () => {
         <Testinomial/>
         <Contact />
         <Footer />
+        {showPopup && (
+        <Portal>
+          <FormPopup />
+        </Portal>
+ 
+      )}
+
+    
     </>
   )
 }
