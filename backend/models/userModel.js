@@ -18,8 +18,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-     
-    
+
+
   },
   phoneNumber: {
     type: String,
@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     unique: true,
     minlength: 10,
     maxlength: 15
+  },
+  role: {
+    type: String,
+    default :"user"
   }
 });
 
@@ -42,8 +46,8 @@ userSchema.pre('save' , async function () {
     const salt = await bcrypt.genSalt(10);
     const hashedPasswprd = await bcrypt.hash(user.password,salt)
     user.password=hashedPasswprd;
-    
-    
+
+
 })
 
 const User = mongoose.model('User', userSchema);

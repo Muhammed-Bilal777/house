@@ -1,13 +1,15 @@
- 
+
 import User from "../models/userModel.js"
+import UserDetails from "../models/userDetails.js"
 import bcrypt from "bcryptjs"
 import sendError from "../utils/sendError.js";
 import catchAsyncError from "../utils/catchAsyncError.js";
 import { sendToken } from "../utils/sendToken.js";
+import Booking from "../models/booking.js";
 
 
 export const userRegister = catchAsyncError(async(req,res,next)=>{
-    
+
     const {name,email,phoneNumber,password} =req.body;
     if(!name || !email || !phoneNumber || !password){
        return next(new sendError("Please provide all fields", 404))
@@ -33,16 +35,16 @@ export const userLogin = catchAsyncError(async (req,res,next)=>{
 
     const isPasswordMatching= await bcrypt.compare(password,user.password);
     if(!isPasswordMatching){
-        
+
             return next(new sendError("email or password is not matching", 404))
-         
+
         }
-    
+
     const userData = user.toJSON();
     delete userData.password;
     sendToken(userData,200,res)
-   
-    
+
+
 })
 
 // user logout
@@ -55,8 +57,8 @@ export const userLogout = catchAsyncError(async (req,res,next)=>{
     }).send({
         message : "logout successfully"
     })
-   
-    
+
+
 })
 
 
@@ -68,5 +70,37 @@ export const UserProfile =catchAsyncError(async(req,res,next)=>{
     })
 })
 
+//user details
+export const UserInfo =catchAsyncError(async(req,res,next)=>{
+    const {name,email,number,role,address,companyName} =req.body;
+    if(!name || !email || !number  || !role || !address || !companyName  ){
+       return next(new sendError("Please provide all fields", 404))
+    }
 
+      const user = await UserDetails.create({name,email,number,role,address ,companyName})
+
+    res.status(200).send({
+        user,
+        message : "User profile",
+    })
+})
+
+//UPDATE USER INFO WITH PHOTOS IDENTIFICATION AND USER PHOTO
+
+
+
+//booking
+
+export const roomBooking = catchAsyncError(async (req, res, next) => {
+     const {name,email,number, address} =req.body;
+    if(!name || !email || !number  ||  !address){
+       return next(new sendError("Please provide all fields", 404))
+    }
+
+    const booking = await Booking.create({ name, email, number, address })
+
+    res.status(200).send({
+        booking
+    })
+})
 
