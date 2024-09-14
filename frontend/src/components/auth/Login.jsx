@@ -14,35 +14,30 @@ const Login = () => {
    const [login,{data, error , isLoading,isSuccess} ] = useLoginMutation()
 
 
-   useEffect(()=>{
-   
-    if(error){
-      toast.error(error.data.message)
-     console.log(error)
-    }
-    if(isSuccess){
-      navigate('/' )
-     toast.success("logged  In")
-     console.log(data);
-     
-     
-    }
+   useEffect(() => {
+     if (error) {
+       toast.error(error.data.message);
+       console.log(error);
+     }
+     if (isSuccess) {
+       navigate("/");
+       toast.success("logged  In");
+       console.log(data);
+     }
+   }, [error, isSuccess]);
 
-   
-    },[error,isSuccess])
-    
-   const onChangeFields =(e)=>{
-    const {name,value} =e.target;
-    setUser((prev)=>({
-      ...prev,[name] :value
-    }))
-  }
- 
-  const submitData =(e)=>{
-    e.preventDefault();
-    login(user)
-    
-  }
+   const onChangeFields = (e) => {
+     const { name, value } = e.target;
+     setUser((prev) => ({
+       ...prev,
+       [name]: value,
+     }));
+   };
+
+   const submitData = (e) => {
+     e.preventDefault();
+     login(user);
+   };
 
 
 

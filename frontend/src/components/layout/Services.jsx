@@ -3,7 +3,7 @@ import React from 'react'
 const Services = () => {
   return (
     <>
-      <div className="my-3 ">
+      <div id="services" className="my-3 ">
         <div className="py-3 text-center align-items-center">
           <h2>Services</h2>
         </div>

@@ -120,3 +120,49 @@ export const getAllUsers = catchAsyncError(async (req, res, next) => {
         users
     })
 })
+
+
+
+//get single user details
+
+
+export const userDetail = catchAsyncError(async (req, res, next) => {
+    const { id } = req.params;
+ console.log(id);
+
+    const user = await User.findById(id);
+    if (!user) {
+        return next(new sendError('user not found', 401))
+    }
+
+
+    res.status(200).send({
+       user
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+//deleting users
+
+export const deleteUser = catchAsyncError(async (req, res, next) => {
+    const { id } = req.params;
+
+    const user = await User.findById(id);
+    if (!user) {
+        return next(new sendError('user not found', 401))
+    }
+
+    await User.findByIdAndDelete(id);
+    res.status(200).send({
+        message : "deleted successfully"
+    })
+})

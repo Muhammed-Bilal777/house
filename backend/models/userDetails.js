@@ -1,47 +1,42 @@
 import mongoose from 'mongoose';
 
-const userDetailsSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    minlength: 3,
-    maxlength: 50
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  photo: {
-    type: String
-  },
-  identification: {
-    type: String,
-    
-  },
-role: {
-    type: String,
-    required: true,
-    enum: ['WORKING', 'STUDENT']
-  },
-  address: {
-    
-    city: {
+const userDetailsSchema = new mongoose.Schema(
+  {
+    name: {
       type: String,
-      required: true
+      required: true,
+      minlength: 3,
+      maxlength: 50,
     },
-    state: {
+    email: {
       type: String,
-      required: true
+      required: true,
+      unique: true,
     },
-     
-    
+    photo: {
+      type: String,
+    },
+    identification: {
+      type: String,
+    },
+    role: {
+      type: String,
+      required: true,
+      enum: ["WORKING", "STUDENT"],
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    companyName: {
+      type: String,
+    },
+    avatar: {
+      type: String,
+    },
   },
-  companyName: {
-    type: String
-  },
- 
-},{timestamps:true});
+  { timestamps: true }
+);
 
 const UserDetails = mongoose.model('UserDetails', userDetailsSchema);
 

@@ -12,7 +12,8 @@ import AdminLayout from "./components/layout/AdminLayout";
 import Rooms from "./components/admin/Rooms";
 import Dashboard from "./components/admin/Dashboard";
 import AllUser from "./components/admin/AllUser";
-
+import UploadDetails from "./components/layout/UploadDetails";
+import Avatar from "./components/layout/Avatar";
 
 const App = () => {
   return (
@@ -27,8 +28,9 @@ const App = () => {
           <Route path="/admin" element={<AdminLayout />} />
           <Route path="/admin/rooms" element={<Rooms />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
-           <Route path="/admin/users" element={<AllUser />} />
-
+          <Route path="/admin/users" element={<AllUser />} />
+          <Route path="/upload" element={<UploadDetails />} />
+          <Route path="/avatar" element={<Avatar />} />
         </Routes>
       </div>
     </Router>
