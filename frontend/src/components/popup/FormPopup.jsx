@@ -20,7 +20,7 @@ const FormPopup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your form submission logic here
+
     console.log('Form submitted!');
     handleClose();
   };
